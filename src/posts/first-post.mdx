@@ -1,15 +1,21 @@
 ---
-title: Sample Post
+title: "Site Study: DivNectar"
 ---
 
-# This is a heading
+# Nice Site! How'd you make it?
 
-This is some paragraph text
-
-## Heading 2
-
-This sentance will be post-cedded by a fenced codeblock
+DivNectar is made using Gatsby.js. It's a static site generator...what's that, you ask? Great question. A static site generator takes a site with a bunch of content, spread across many files and modules and combines it to create essentially a bunch of "static" files...which is better for site performance, SEO, and much much more.
 
 ```js
-console.log("Hello, syntax highlighting!")
+console.log("wow")
 ```
+
+## Okay...the blog part?
+
+All of the blog posts that you'll read on my site are written in .mdx, a sub-dialect of Markdown that allows me to use javascript inside of the markdown. For example...if I had some interactive coding component, I could re-use that react component across any/all of my markdown posts. Pretty cool.
+
+I also use react-prism to consume the source code blocks that I feed to my markdown files. By passing a custom component to replace the standard "pre" block that markdown converts too, I'm able to customize it's code and apperance. It's currently set to my favorite theme, Ayu Light. I know, it's a light theme...I like what I like 🤷 Don't @ me.
+
+## How about the styling?
+
+The styling on the site is all done through styled-components...and it's all custom. I decided not to use a UI library for this version of the site. I just wanted it to look unique, and I really wanted to implement the Ayu color theme. I know not everyone likes a light theme, however.
