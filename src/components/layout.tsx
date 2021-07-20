@@ -1,9 +1,8 @@
 import React, { ReactNode, useContext } from "react"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql, PageRendererProps } from "gatsby"
 import styled, { ThemeContext } from "styled-components"
 import { GlobalStyle, Theme } from "../styles/theme"
-import { rhythm, styledScale } from "../styles/typography"
+// import { rhythm, styledScale } from "../styles/typography"
 
 import Header from "./header"
 import { TextContentWrapper } from "../styles/wrappers"
@@ -29,7 +28,7 @@ const Footer = styled.div`
 `
 
 const Layout = (props: Props) => {
-  const { children, title, location } = props
+  const { children } = props
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -60,8 +59,5 @@ const Layout = (props: Props) => {
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default Layout

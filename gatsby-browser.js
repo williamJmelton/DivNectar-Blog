@@ -1,7 +1,6 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import vsLight from "prism-react-renderer/themes/vsLight"
 import ayuLight from "./src/styles/ayu-highlight-scheme"
 
 /* eslint-disable */

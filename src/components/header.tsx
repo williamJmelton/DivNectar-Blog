@@ -32,8 +32,8 @@ const HeaderContainer = styled.div`
 const Header = ({ siteTitle }: HeaderProps) => (
   <header>
     <HeaderContainer>
-      <h2 style={{ margin: 0, padding: "0 10px" }}>DivNectar</h2>
-      <Link to="/">blog</Link>
+      <h2 style={{ margin: 0, padding: "0 10px" }}> {siteTitle} </h2>
+      <Link to="/blog">blog</Link>
       <Link to="/">portfolio</Link>
     </HeaderContainer>
   </header>

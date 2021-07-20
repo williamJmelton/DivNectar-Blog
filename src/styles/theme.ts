@@ -1,6 +1,6 @@
 // tslint:disable-next-line:no-submodule-imports
 import { createGlobalStyle, DefaultTheme } from "styled-components"
-import Typography from "./typography"
+// import Typography from "./typography"
 import { palette } from "./palette"
 
 
@@ -109,10 +109,7 @@ export const GlobalStyle = createGlobalStyle<{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-  }
-
-  p {
-    color: inherit;
+    color: ${props => props.theme.global.color};
   }
 
   a {
