@@ -13,7 +13,7 @@ const HeaderContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 1rem 5rem;
   top: 0;
   position: fixed;
   margin: 0;
@@ -32,7 +32,7 @@ const HeaderContainer = styled.div`
 const Header = ({ siteTitle }: HeaderProps) => (
   <header>
     <HeaderContainer>
-      <h2 style={{ margin: 0, padding: "0 10px" }}> {siteTitle} </h2>
+      <Link to="/"><h2 style={{ margin: 0, padding: "0 10px" }}> {siteTitle} </h2></Link>
       <Link to="/blog">blog</Link>
       <Link to="/">portfolio</Link>
     </HeaderContainer>

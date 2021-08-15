@@ -2,15 +2,17 @@ import React, { ReactNode, useContext } from "react"
 import { useStaticQuery, graphql, PageRendererProps } from "gatsby"
 import styled, { ThemeContext } from "styled-components"
 import { GlobalStyle, Theme } from "../styles/theme"
+import { useStyledDarkMode } from "gatsby-styled-components-dark-mode";
 // import { rhythm, styledScale } from "../styles/typography"
 
 import Header from "./header"
 import { TextContentWrapper } from "../styles/wrappers"
 
 interface Props extends PageRendererProps {
-  title: string
-  children: ReactNode
-  theme: Theme
+  title?: string
+  children?: ReactNode
+  theme?: Theme
+  topMargin?: number
 }
 
 const Footer = styled.div`
@@ -28,7 +30,14 @@ const Footer = styled.div`
 `
 
 const Layout = (props: Props) => {
-  const { children } = props
+  const { location, title, children } = props
+  const { isDark, toggleDark } = useStyledDarkMode();
+  var topMarginValue = 40; // by default the top margin is 40px to keep
+                           // things from going under the navbar.
+  if(props.topMargin) {
+    topMarginValue = props.topMargin;
+  }
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -43,10 +52,18 @@ const Layout = (props: Props) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div style={{ marginTop: 40 }}>
-        <GlobalStyle theme={theme} didAppLoad={false} />
+      <div style={{ marginTop: topMarginValue }}>
+        <GlobalStyle theme={theme} isDefaultDark={false} didAppLoad={false} />
         <main>
           <TextContentWrapper>{children}</TextContentWrapper>
+          <label>
+            <input
+              type="checkbox"
+              onChange={() => toggleDark()}
+              checked={!!isDark}
+            />
+            Dark mode
+          </label>
         </main>
         <Footer>
           <footer>

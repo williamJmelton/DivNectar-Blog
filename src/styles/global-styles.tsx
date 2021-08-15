@@ -1,20 +1,22 @@
 import { createGlobalStyle } from "styled-components"
+// import Theme from "typography-theme-grand-view"
 import { Theme } from "./theme"
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{theme: Theme, didAppLoad: boolean}>`
   html {
-    /* Default text & BG color from Ayu theme */
     background-color: #FAFAFA;
     color: #575f66;
     font-size: 1.1.rem;
-    /* background-image: url('/images/noiseTexture.png');
-    background-repeat: repeat;
-    background-size: 128px; */
   }
   body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    transition: background ${props =>
+      props.didAppLoad ? "0.2s" : "0.0s"} ease-out;
+    background-image: url('/broken_noise.png');
+    background-repeat: repeat;
+    background-size: 200px;
   }
 
   a {
@@ -24,7 +26,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    color: #F2AE49
+    /* color: #F2AE49 */
+    color: red;
   }
 
   h2 {

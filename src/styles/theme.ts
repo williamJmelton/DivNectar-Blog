@@ -1,11 +1,12 @@
 // tslint:disable-next-line:no-submodule-imports
 import { createGlobalStyle, DefaultTheme } from "styled-components"
-// import Typography from "./typography"
+// import { rythm } from "./typography"
 import { palette } from "./palette"
 
 
+
 export interface Theme extends DefaultTheme {
-  isDark?: boolean
+  isDark: boolean
   global: {
     bg: string
     color: string
@@ -13,6 +14,7 @@ export interface Theme extends DefaultTheme {
     linkHover: string
     inlineBgColor: string
     hr?: string
+    bgImage: string
   }
   code: {
     highlightCodeLineBg: string
@@ -71,6 +73,7 @@ const baseTheme = {
 
 export const darkTheme: Theme = {
   ...baseTheme,
+  isDark: true,
   global: {
     bg: palette.darkShades,
     color: palette.lightShades,
@@ -78,32 +81,37 @@ export const darkTheme: Theme = {
     inlineBgColor: ColorPalette.lightGrey,
     link: palette.mainBrand,
     linkHover: palette.lightAccent,
+    bgImage: `url('/images/broken_noise.png')`
   },
 }
 
 export const lightTheme: Theme = {
   ...baseTheme,
+  isDark: false,
   global: {
     bg: palette.lightShades,
     color: palette.darkShades,
     inlineBgColor: ColorPalette.lightYellow,
     link: palette.mainBrand,
     linkHover: palette.darkAccent,
+    bgImage: `url('/images/light_toast.png')`
   },
 }
 
 export const GlobalStyle = createGlobalStyle<{
   theme: Theme
   didAppLoad: boolean
+  isDefaultDark: false
 }>`
   html {
-    /* Default text & BG color from Ayu theme */
     background-color: ${props => props.theme.global.bg};
     color: ${props => props.theme.global.color};
     font-size: 1.1.rem;
-    /* background-image: url('/images/noiseTexture.png');
+    background-image: ${props => props.theme.global.bgImage};
     background-repeat: repeat;
-    background-size: 128px; */
+    background-size: 200px;
+    height: 100%;
+    /* overflow-y: hidden; */
   }
   body {
     box-sizing: border-box;
